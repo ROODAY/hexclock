@@ -59,9 +59,9 @@
 			hours.innerHTML = ("0" + date.getHours()).slice(-2);
 			mins.innerHTML = ("0" + date.getMinutes()).slice(-2);
 			secs.innerHTML = ("0" + date.getSeconds()).slice(-2);
-			hex1.innerHTML = ("0" + date.getHours().toString(16)).toUpperCase().slice(-2);
-			hex2.innerHTML = ("0" + date.getMinutes().toString(16)).toUpperCase().slice(-2);
-			hex3.innerHTML = ("0" + date.getSeconds().toString(16)).toUpperCase().slice(-2);
+			hex1.innerHTML = ("0" + (Math.round(date.getHours() * 255 / 12)).toString(16)).toUpperCase().slice(-2);
+			hex2.innerHTML = ("0" + (Math.round(date.getMinutes() * 255 / 60)).toString(16)).toUpperCase().slice(-2);
+			hex3.innerHTML = ("0" + (Math.round(date.getSeconds() * 255 / 60)).toString(16)).toUpperCase().slice(-2)
 			var hex = hex1.innerHTML + hex2.innerHTML + hex3.innerHTML;
 			document.body.style.background = "#" + hex;
 			setInterval(function(){
@@ -69,9 +69,9 @@
 				hours.innerHTML = ("0" + date.getHours()).slice(-2);
 				mins.innerHTML = ("0" + date.getMinutes()).slice(-2);
 				secs.innerHTML = ("0" + date.getSeconds()).slice(-2);
-				hex1.innerHTML = ("0" + date.getHours().toString(16)).toUpperCase().slice(-2);
-				hex2.innerHTML = ("0" + date.getMinutes().toString(16)).toUpperCase().slice(-2);
-				hex3.innerHTML = ("0" + date.getSeconds().toString(16)).toUpperCase().slice(-2);
+				hex1.innerHTML = ("0" + (Math.round(date.getHours() * 255 / 12)).toString(16)).toUpperCase().slice(-2);
+				hex2.innerHTML = ("0" + (Math.round(date.getMinutes() * 255 / 60)).toString(16)).toUpperCase().slice(-2);
+				hex3.innerHTML = ("0" + (Math.round(date.getSeconds() * 255 / 60)).toString(16)).toUpperCase().slice(-2);	
 				var hex = hex1.innerHTML + hex2.innerHTML + hex3.innerHTML;
 				document.body.style.background = "#" + hex;
 			}, 1000)
