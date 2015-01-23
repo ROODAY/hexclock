@@ -47,8 +47,18 @@
 	 			var title = document.getElementById("title");
 	 			title.style['margin-left'] = (((document.documentElement.clientWidth) / 2) - (title.offsetWidth / 2)) + 'px';
 			}
-			window.onresize = center();
-			window.onload = center();
+			center();
+			var addEvent = function(elem, type, eventHandle) {
+			    if (elem == null || typeof(elem) == 'undefined') return;
+			    if ( elem.addEventListener ) {
+			        elem.addEventListener( type, eventHandle, false );
+			    } else if ( elem.attachEvent ) {
+			        elem.attachEvent( "on" + type, eventHandle );
+			    } else {
+			        elem["on"+type]=eventHandle;
+			    }
+			};
+			addEvent(window, "resize", center);
 			var date = new Date;
 			var hours = document.getElementById("hours");
 			var mins = document.getElementById("mins");
@@ -59,7 +69,7 @@
 			hours.innerHTML = ("0" + date.getHours()).slice(-2);
 			mins.innerHTML = ("0" + date.getMinutes()).slice(-2);
 			secs.innerHTML = ("0" + date.getSeconds()).slice(-2);
-			hex1.innerHTML = ("0" + (Math.round(date.getHours() * 255 / 12)).toString(16)).toUpperCase().slice(-2);
+			hex1.innerHTML = ("0" + (Math.round(date.getHours() * 255 / 24)).toString(16)).toUpperCase().slice(-2);
 			hex2.innerHTML = ("0" + (Math.round(date.getMinutes() * 255 / 60)).toString(16)).toUpperCase().slice(-2);
 			hex3.innerHTML = ("0" + (Math.round(date.getSeconds() * 255 / 60)).toString(16)).toUpperCase().slice(-2)
 			var hex = hex1.innerHTML + hex2.innerHTML + hex3.innerHTML;
@@ -69,7 +79,7 @@
 				hours.innerHTML = ("0" + date.getHours()).slice(-2);
 				mins.innerHTML = ("0" + date.getMinutes()).slice(-2);
 				secs.innerHTML = ("0" + date.getSeconds()).slice(-2);
-				hex1.innerHTML = ("0" + (Math.round(date.getHours() * 255 / 12)).toString(16)).toUpperCase().slice(-2);
+				hex1.innerHTML = ("0" + (Math.round(date.getHours() * 255 / 24)).toString(16)).toUpperCase().slice(-2);
 				hex2.innerHTML = ("0" + (Math.round(date.getMinutes() * 255 / 60)).toString(16)).toUpperCase().slice(-2);
 				hex3.innerHTML = ("0" + (Math.round(date.getSeconds() * 255 / 60)).toString(16)).toUpperCase().slice(-2);	
 				var hex = hex1.innerHTML + hex2.innerHTML + hex3.innerHTML;
